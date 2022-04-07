@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feladatok2</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var isRandom = false;
+        var randomNumb;
+
+        function tippelo(tipp) {
+            let result;
+            if (!isRandom) {
+                console.log(randomNumb);
+                generateNumber();
+                console.log(isRandom)
+                isRandom = true;
+                console.log(isRandom)
+                console.log(randomNumb);
+            }
+            if (tipp == randomNumb) {
+                find = "Eltalálta!";
+            } else {
+                if (tipp > randomNumb) {
+                    find = "Nem találta el! A tippe nagyobb, mint a keresendő szám.";
+                } else {
+                    find = "Nem találta el! A tippe kisebb, mint a keresendő szám.";
+                }
+            }
+            $("#res").text(find);
+        }
+
+        function generateNumber() {
+            randomNumb = randomGenerate(1, 100);
+            console.log(randomNumb);
+        }
+
+        function randomGenerate(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function calculation(a, b) {
+            let square = a + b;
+            let area = a * b;
+            $("#square").text("A téglalap kerülete: " +
+                square + " A területe: " + area);
+        }
+
+        function triangleCalc(a, b, c) {
+            let square = a + b + c;
+            let s = square / 2;
+            let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+            $("#triangleResult").text("A háromszög kerülete: " +
+                square + " A területe: " + area);
+        }
+
+        function dayAsaNumber(numb) {
+            var result;
+            console.log(numb);
+            console.log(result);
+            if (numb > 7 || numb <= 0) {
+                result = "Nem megfelelő számot adott meg.";
+            } else {
+                switch (numb) {
+                    case 1:
+                        result = "hétfő";
+                        break;
+                    case 2:
+                        result = "kedd";
+                        break;
+                    case 3:
+                        result = "szerda";
+                        break;
+                    case 4:
+                        result = "csütörtök";
+                        break;
+                    case 5:
+                        result = "péntek";
+                        break;
+                    case 6:
+                        result = "szombat";
+                        break;
+                    case 7:
+                        result = "vasárnap";
+                        break;
+                }
+
+            }
+            $("#day").text(result);
+            console.log(result);
+        }
+
+        function greeting() {
+            let greeting;
+            const d = new Date();
+            let hour = d.getHours();
+            console.log(hour);
+            if (hour >= 20 || hour < 5) {
+                greeting = "Jó éjszakát!";
+            } else if (hour >= 5 && hour < 11) {
+                greeting = "Jó reggelt!";
+            } else if (hour >= 11 && hour < 17) {
+                greeting = "Jó napot!";
+            }
+            $("#welcome").text(greeting);
+            
+        }
+    </script>
+
+    <input type="number" id="tipp">
+    <button onclick="tippelo(parseInt($('#tipp').val()))"> tippel</button>
+    <p id="res"></p>
+    <button onclick="randomNumberMakeDefault()">Alaphelyzetbe állít</button>
+    <input type="number" id="aSide">
+    <input type="number" id="bSide">
+    <button onclick="calculation(parseFloat($('#aSide').val()), parseFloat($('#aSide').val()))">A téglalap területének és kerületének számítása</button>
+    <p id="square">
+
+        <!-- <p id="area"></p> -->
+    </p>
+    <input type="number" id="a">
+    <input type="number" id="b">
+    <input type="number" id="c">
+    <button onclick="triangleCalc(parseFloat($('#a').val()), parseFloat($('#b').val()), parseFloat($('#c').val()))">Háromszög területének és kerületének a kiszámítása</button>
+    <p id="triangleResult"></p>
+    <input type="number" id="x">
+    <button onclick="dayAsaNumber(parseInt($('#x').val()))">megfelelő nap kiírása</button>
+    <p id="day"></p>
+    <button onclick="greeting()">Köszöntés</button>
+    <p id="welcome"></p>
+</body>
+
+</html>
+
+</html>
