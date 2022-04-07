@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feladat4</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+</head>
+
+<body>
+    
+    <input type="text" id="input" oninput="parallel_input_print()">
+    <p id="output"></p>
+
+    <script>
+         function parallel_input_print(){
+            $("#output").html($("#input").val());
+        }
+    </script>
+</body>
+
+</html>
